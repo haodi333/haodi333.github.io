@@ -1,0 +1,1269 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/cube32.png">
+  <link rel="icon" href="/img/cube32.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Haodi">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Causal Inference">
+<meta property="og:url" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/index.html">
+<meta property="og:site_name" content="IDEAZOO">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/1.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/2.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/%E6%8D%95%E8%8E%B7.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/3.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/4.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/5.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/7.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/8.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/6.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/9.png">
+<meta property="og:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/10.png">
+<meta property="article:published_time" content="2023-09-10T11:42:35.000Z">
+<meta property="article:modified_time" content="2024-09-27T14:50:17.684Z">
+<meta property="article:author" content="Haodi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://haodi333.github.io/2023/09/10/Causal%20Inference/1.png">
+  
+  
+  
+  <title>Causal Inference - IDEAZOO</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"haodi333.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/0.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"AgcF1mQgwJbHELHjHp7JRJcB-gzGzoHsz","app_key":"0fENfeqhc4WLt6AcCXBkTH91","server_url":"https://agcf1mqg.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Home</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Causal Inference"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-10 19:42" pubdate>
+          September 10, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          24k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          196 mins
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          Read <span id="leancloud-page-views"></span> times
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Causal Inference</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <hr>
+<span id="more"></span>
+<h2 id="introduction">Introduction</h2>
+<p>What exactly is machine learning? What can we derive from data? How
+can we ensure that the conclusions we draw are correct? To address these
+questions, we need to move beyond simple correlation analysis and delve
+into causal analysis. For instance, we can collect data on whether
+individuals smoke and whether they develop lung cancer, then use a
+classification model to predict the incidence of lung cancer or
+calculate the correlation between smoking and lung cancer to persuade
+the public. However, why don't we predict smoking rates based on lung
+cancer? Clearly, this would be a meaningless research objective. But how
+do we know it's meaningless to the extent that it seems "obvious"? The
+premise for this conclusion is our common understanding that smoking may
+lead to lung cancer, while lung cancer is not a cause of smoking.
+Whether we're obtaining the probability of developing lung cancer under
+smoking conditions or proving a correlation between smoking and lung
+cancer, our conclusions rely on common sense reasoning. In a narrow
+sense, models that require human involvement in reasoning are not
+perfect algorithms, just as using an abacus is to using a calculator. In
+a broader sense, we cannot always confidently infer correct conclusions
+from correlations; they are not always as straightforward as the case of
+smoking and lung cancer, as illustrated by the examples below.</p>
+<h3 id="simpson-paradox">Simpson Paradox</h3>
+<p>A hospital has reported the treatment effects of a certain medication
+on patients, as shown in the table below.</p>
+<p><img src="1.png" srcset="/img/0.gif" lazyload></p>
+<p>From the final results, it appears that the cure rate without the
+medication is 5% higher than with it. Does this imply that not using the
+medication is better? However, if we separate the data by gender, we
+find that among males, the cure rate with the medication is 6% higher
+than without it, and among females, it’s 4% higher. Does this indicate
+that using the medication is better? The reason for this discrepancy
+lies in the fact that the overall cure rate for females is significantly
+lower than for males, and the medication usage rate among females is
+notably higher. Consequently, in the medication group, females dominate,
+while in the non-medication group, males dominate. This results in the
+higher cure rate of the non-medication group being primarily due to
+males who did not use the medication. Symbolically, this can be
+described as: <span class="math display">\[
+\frac{a_1}{b_1}&gt;\frac{a_2}{b_2},\frac{a_3}{b_3}&gt;\frac{a_4}{b_4}\not\equiv
+\frac{a_1+a_3}{b_1+b_3}&gt;\frac{a_2+a_4}{b_2+b_4}
+\]</span> Consider that when faced with such relationships in a dataset,
+we can create a highly accurate predictive model for whether a patient
+is cured and select a feature subset that includes both medication use
+and gender. However, can these lead to the conclusion that the
+medication improves cure rates? No, this issue transcends correlation
+and delves into causality. We need more sophisticated algorithms to
+address such problems.</p>
+<h3 id="correlation-and-causation">Correlation and Causation</h3>
+<p>Correlation reflects the superficial phenomenon of causation. Because
+there is a causal relationship between variables, they exhibit
+correlation. Conversely, does correlation between variables necessarily
+imply a causal relationship? This question is quite controversial. Here,
+I will provide some definitions to explain why I believe that correlated
+variables must have a causal relationship.</p>
+<p><strong>Stable Data</strong>: Data that consistently fits a certain
+distribution over a long period is referred to as stable data.</p>
+<p><strong>Correlation</strong>: If certain variables in stable data are
+not independent, they are said to be correlated.</p>
+<p><strong>Causation</strong>: If forcibly changing the value of
+variable A results in a change in the value of variable B, while
+forcibly changing the value of variable B does not lead to a change in
+variable A, then A and B are said to have causation, with A as the cause
+and B as the effect. In a Directed Acyclic Graph (DAG), variables are
+represented as nodes, and directed edges point from cause nodes to
+effect nodes.</p>
+<p><strong>Causal Relationship</strong>: Sufficient conditions for a
+causal relationship between variables A and B include the following:</p>
+<ol type="1">
+<li>A and B have a causal relationship.</li>
+<li>A and B share a common cause, meaning A and B are descendants of the
+same cause node.</li>
+</ol>
+<p>Based on the definitions above, having a causal relationship and
+having correlation are necessary and sufficient conditions. For example,
+the following data shows the investment in technology in America and the
+number of suicides.</p>
+<p><img src="2.png" srcset="/img/0.gif" lazyload></p>
+<p>（More examples can be found in <a target="_blank" rel="noopener" href="https://www.tylervigen.com/spurious-correlations">Spurious
+Correlations (tylervigen.com)</a>）</p>
+<p>The data above does not meet the definition of stable data due to the
+small sample size. However, if we compile daily data over a continuous
+span of ten years and still observe such a strong correlation, we would
+have to believe in a causal relationship between investment in
+technology and the number of suicides (for example, due to the
+initiation of Frankenstein research).</p>
+<p>Another situation is mutual causation, which cannot be represented
+using a DAG. For instance, in an ecosystem, an increase in wolf
+population leads to a decrease in sheep population, which in turn
+reduces the wolf population, leading to an increase in sheep population,
+which then causes an increase in the wolf population. The relationship
+between wolf and sheep populations cannot be represented by a DAG. This
+article will not discuss such cases but will focus on relationships that
+can be represented using a DAG.</p>
+<h2 id="foundation">Foundation</h2>
+<p>Uppercase letters represent random variables, while lowercase letters
+represent the values of these random variables. In the formulas, <span class="math inline">\(P(X)\)</span> denotes the probabilities for all
+values of <span class="math inline">\(X\)</span>, $P(X=x) or $<span class="math inline">\(P(x)\)</span> denotes the prbability of <span class="math inline">\(X=x\)</span>. <span class="math inline">\(P(X=x|Y=y)=P(x|y)\)</span> denotes the probability
+of <span class="math inline">\(X=x\)</span> when <span class="math inline">\(Y=y\)</span> holds. <span class="math inline">\(P(x_1,x_2,...x_n)\)</span> denotes the probability
+of <span class="math inline">\(X_1=x_1\wedge X_2=x_2,...\wedge
+X_n=x_n\)</span>.</p>
+<h3 id="conditional-independence">Conditional Independence</h3>
+<p>In the case where the value of the random variable <span class="math inline">\(C\)</span> is determined (i.e., $ C = k $), if
+random variables $ A $ and $ B $ are independent, then $ A $ and $ B $
+are conditionally independent given <span class="math inline">\(C =
+k\)</span>: <span class="math display">\[
+A \perp B | C = k \iff P(A | C = k) P(B | C = k) = P(AB | C = k)
+\]</span> If the above relationship holds for any value of $ C $, then $
+A $ and $ B $ are conditionally independent given $ C $, denoted as $ A
+B | C $. This is equivalent to: <span class="math display">\[
+P(B | C = k) = P(B | C = k, A) \\ P(A | C = k) = P(A | C = k, B)
+\]</span> Conditional independence of $ A $ and $ B $ given $ C $ is
+neither sufficient nor necessary for independence of $ A $ and $ B $.
+For example, let $ A $ be the event that the first coin toss results in
+heads, $ B $ be the event that the second coin toss results in heads,
+and $ C $ be the event that both tosses are heads. In this case, $ A $
+and $ B $ are independent, but $ P(A | C = 1) = P(B | C = 1) = P(AB | C
+= 1) = 1 $, hence $ A $ and $ B $ are not independent given $ C $. On
+the other hand, if $ A = B = C $, then we have $ P(A | C) P(B | C) =
+P(AB | C) = 1 $, but $ P(A) P(B) = P(A)^2 P(AB) = P(A) $.</p>
+<h3 id="chain-rule">Chain Rule</h3>
+<p>For random variables <span class="math inline">\(X_1,X_2...X_n\)</span>，when <span class="math inline">\(X_i=x_i\)</span>, the following equation holds
+<span class="math display">\[
+P(x_1,x_2,...x_n)=P(x_1)P(x_2|x_1)...P(x_n|x_1,x_2...x_{n-1})
+\]</span> It is infered directly from the definition of conditional
+probability.</p>
+<h3 id="joint-probability-with-function">Joint Probability with
+Function</h3>
+<p>Let <span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>,<span class="math inline">\(C\)</span>
+be random variables and <span class="math inline">\(C=f(A,B)\)</span>,
+then holds <span class="math display">\[
+P(C=c,A=a)=P(B=u_b,A=a).
+\]</span> where <span class="math inline">\(u_b\)</span> is the set
+satisfying <span class="math inline">\(f(a,u_b)=c\)</span>.</p>
+<h2 id="probability-models">Probability Models</h2>
+<h3 id="naive-bayes">Naive Bayes</h3>
+<p>In a classification task, we consider it as the probability of the
+target taking a certain value given the features, ultimately aiming to
+obtain <span class="math inline">\(P(y|x_1,x_2,...x_n)\)</span>. Using
+the relationship of conditional probabilities (Bayes' theorem): <span class="math display">\[
+P(y|x_1,x_2,...x_n)=\frac{P(x_1,x_2,...x_n|y)P(y)}{P(x_1,x_2,...x_n)}
+\]</span> Here, <span class="math inline">\(P(y)\)</span> can be
+obtained from the frequency of <span class="math inline">\(Y=y\)</span>.
+In classification tasks, the number of classes for the target value is
+generally much smaller than the number of samples, so this is feasible.
+However, <span class="math inline">\(P(x_1,x_2,...x_n|y)\)</span> and
+<span class="math inline">\(P(x_1,x_2,...x_n)\)</span> can not be
+calculated in this way because the combinations of features are too
+many. For example, if each feature is binary, there are <span class="math inline">\(2^n\)</span> combinations, and we may not find
+samples that fit these combinations. Thus, we need to simplify this by
+assuming the features are independent and that the features are
+independent of the target. This simplifies the equation to: <span class="math display">\[
+P(y|x_1,x_2,...x_n)=\frac{P(x_1|y)P(x_2|y)...P(x_n|y)P(y)}{P(x_1)P(x_2)...P(x_n)}
+\]</span> In this way, <span class="math inline">\(P(x_k|y)\)</span> and
+<span class="math inline">\(P(x_k)\)</span> can both be obtained from
+frequencies.</p>
+<p>Undoubtedly, this approach is quite wasteful; as the dataset features
+increase, feature redundancy also increases, leading to worse
+performance.</p>
+<h3 id="bayesian-network">Bayesian Network</h3>
+<p>The naive Bayes approach completely ignores the relationships between
+features. In contrast, a Bayesian network does not make such extreme
+simplifications. It should be noted that a Bayesian network essentially
+describes a graphical representation of the relationships among random
+variables. The direction of the arrows in the Bayesian network only
+indicates the order in which features are added; the connected variables
+are related but do not necessarily imply causation. The manual
+algorithmic process for constructing a Bayesian network is as follows.
+(Building a Bayesian network is an NP problem, so another approach is to
+use optimization algorithms for search.) Clearly, this method results in
+a Directed Acyclic Graph (DAG).</p>
+<p>Input: Random variables <span class="math inline">\(V_1,V_2...V_n\)</span> Output: A directed acyclic
+graph which describes the correlation among variables</p>
+<ol type="1">
+<li>for <span class="math inline">\(i\)</span> in <span class="math inline">\(1,2...n\)</span> do</li>
+<li>Add <span class="math inline">\(V_i\)</span> into the graph, if
+<span class="math inline">\(V_i\)</span> has correlation with any other
+nodes(which have a smaller order than <span class="math inline">\(V_i\)</span>) in the graph, add a directed edge
+between these two nodes with <span class="math inline">\(V_i\)</span> as
+the end point. For example, if <span class="math inline">\(V_k(k&lt;i)\)</span> has a correlation with <span class="math inline">\(V_i\)</span>, then add a directed edge from <span class="math inline">\(V_k\)</span> to <span class="math inline">\(V_i\)</span></li>
+<li>endfor</li>
+<li>Compute the probability table for every point.</li>
+</ol>
+<h3 id="assumption-on-conditional-independence">Assumption on
+Conditional Independence</h3>
+<p>In a Bayesian network, the correlations are manually added, which
+simplifies the network structure. A Bayesian network can also be
+obtained using a group optimization algorithm, as it only considers the
+correlations between variables, which can be directly derived from
+frequencies.</p>
+<p><img src="捕获.png" srcset="/img/0.gif" lazyload style="width:60.0%"></p>
+<p>For example, the two diagrams on the left and right describe the same
+thing (R: Rain; T: Traffic jam), namely the probability table on the far
+right. This probability table is directly obtained from the dataset.
+From a god's-eye view, the left diagram describes the correct causal
+relationships. However, in practice, we can only derive the probability
+table from the dataset, which allows us to determine only that there is
+a correlation between rain and traffic congestion. How to derive
+causality will be discussed later; for now, let's clarify how to compute
+the probability table. Consider a Bayesian network consisting of <span class="math inline">\(n\)</span> variables. To compute <span class="math inline">\(P(v_1,v_2,...v_n)\)</span>, we use the chain rule:
+<span class="math display">\[
+P(v_n)=\prod _{i=1}^{n}P(v_i|v_1,...v_{i-1})
+\]</span></p>
+<p>In the Bayesian network, if there is a relationship <span class="math inline">\(A\rightarrow B\rightarrow C\)</span>, we assume
+that <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> are conditionally independent given
+<span class="math inline">\(B\)</span>, i.e., we assume: <span class="math display">\[
+v_i\perp \{v_1,...v_{i-1} \} \cap {\neg parent(v_i)}|parent(v_i)
+\]</span> then <span class="math display">\[
+P(v_i|v_1,...v_{i-1})=P(v_i|parent(v_{i}))\\\
+P(v_n)=\prod _{i=1}^{n}P(v_i|parent(v_{i}))\tag{1}
+\]</span> Generally, the number of parent nodes in a Bayesian network is
+much smaller than the total number of nodes, so calculating <span class="math inline">\(P(v_i|parent(v_{i}))\)</span> is feasible. The
+conditional independence assumption is still a simplification but
+retains more information about feature relationships compared to naive
+Bayes.</p>
+<h2 id="causal-model">Causal Model</h2>
+<p>In a Bayesian network, the assumption of conditional independence
+ignores some relationships between features. In the relationship <span class="math inline">\(A\rightarrow B\rightarrow C\)</span>, <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> may not be independent given <span class="math inline">\(B\)</span>. In the manual construction algorithms
+for Bayesian networks, if a newly added node is correlated with nodes
+already in the network, an edge is drawn, meaning <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> may be independent, but they are not
+necessarily conditionally independent given <span class="math inline">\(B\)</span>. This was discussed in the first
+section. However, if we can construct a Bayesian network that adheres to
+the assumption of conditional independence, this network can overcome
+the limitations of the assumptions. This can be achieved by constructing
+a Bayesian network based on causality. In a causal DAG, the values of
+cause nodes influence the values of effect nodes (though not necessarily
+due to the existence of hidden variables).</p>
+<h3 id="exogenous-variables">Exogenous Variables</h3>
+<p>Some variables impact the data but are not recorded as features;
+these are known as hidden variables. Due to the presence of hidden
+variables, we cannot ensure that the value of a cause in the DAG
+corresponds to a value of an effect. Instead, both the value of the
+cause and the value of the hidden variable jointly determine the value
+of the effect, assuming the hidden variable is independent of the
+observed variables.</p>
+<h3 id="definition">Definition</h3>
+<p>Causal relationships can be viewed as functions where causes serve as
+independent variables and effects as dependent variables. Based on this
+definition, the relationships between nodes in a causal DAG have the
+following three basic types. (These relationships can also be applied in
+non-causal DAGs; in fact, they first appeared in non-causal DAGs, but in
+causal DAGs, the following can be strictly proven based on the
+definition, whereas in non-causal DAGs, they serve merely as
+simplifications without strict mathematical significance.)</p>
+<ol type="1">
+<li>Chain: <span class="math inline">\(A\rightarrow B\rightarrow
+C\)</span></li>
+<li>Common cause: <span class="math inline">\(A\leftarrow B\rightarrow
+C\)</span></li>
+<li>Common effect: <span class="math inline">\(A\rightarrow B\leftarrow
+C\)</span></li>
+</ol>
+<p>In a chain relationship, according to the definition of causality,
+let <span class="math inline">\(A=f(U_A),B=g(A,U_B),C=h(B,U_C)\)</span>,
+where <span class="math inline">\(U_A,U_B,U_C\)</span> are sets of
+latent variables.</p>
+<ul>
+<li>If <span class="math inline">\(P(B=b | A=a)=0\)</span>, then <span class="math inline">\(A=a\)</span> and <span class="math inline">\(B=b\)</span> are not independent. Otherwise, we
+have</li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}
+P(B=b|A=a)&amp;=P(g(A,U_B)=b|A=a)=\frac{P(g(A,U_B)=b,A=a)}{P(A=a)}\\
+&amp;=\frac{P(A=a,U_B=u_b)}{P(A=a)}=P(U_B=u_b)
+\end{aligned}
+\]</span></p>
+<p>​ where <span class="math inline">\(g(a,u_b)=b\)</span>, and <span class="math inline">\(u_b\)</span> is the set of all values of <span class="math inline">\(U_B\)</span> that satisfy this relationship.</p>
+<ul>
+<li><p>If <span class="math inline">\(P(B=b) = P(U_B=u_b)\)</span>, then
+$ A=a $ and $ B=b $ are independent, meaning that $ B=b $ holds only
+when $ U_B=u_b $. Otherwise, $ P(B=b|A=a) P(B=b) $. In summary, $ A $
+and $ B $ are independent only when the value of $ B $ is completely
+determined by $ U_B $. Similarly, $ B $ and $ C $, as well as $ A $ and
+$ C $, may be dependent for some values and independent for others.
+However, $ A $ and $ C $ are conditionally independent given $ B $
+because:</p>
+<ul>
+<li>If $ P(B=b|A=a)=0 $, then $ P(A=a,B=b)=0 $, which implies $
+P(A=a|B=b)P(C=c|B=b)=P(A=a,C=c|B=b)=0 $, thus $ A C | B $. Similarly, if
+$ P(C=c|B=b)=0 $, then $ A C | B $. Otherwise, following a similar
+argument, we have <span class="math display">\[
+\begin{aligned}
+P(A=a,C=c|B=b)&amp;=\frac{P(A=a,B=b,C=c)}{P(B=b)}\\
+&amp;=\frac{P(A=a,B=b,U_C=u_c)}{P(B=b)}=\frac{P(A=a,U_B=u_b,U_C=u_c)}{P(B=b)}\\
+P(A=a|B=b)&amp;=\frac{P(A=a,U_B=u_b)}{P(B=b)}\\
+P(C=c|B=b)&amp;=P(U_C=u_c)
+\end{aligned}
+\]</span></li>
+</ul></li>
+</ul>
+<p>Thus we have <span class="math display">\[
+P(A=a,C=c|B=b)=P(A=a|B=b)P(C=c|B=b)
+\]</span> In conclusion, $ A $ and $ C $ are conditionally independent
+given $ B $. Intuitively, when we know the value of $ B $, the value of
+$ C $ can be roughly determined, but we do not know which value of $ A $
+led to that value of $ B $.</p>
+<p>It can be proven that in a common cause relationship, $ A $ and $ B
+$, $ C $ and $ B $, $ A $ and $ C $ may not be independent, but $ A $
+and $ C $ are conditionally independent given $ B $. This is also
+intuitive because once $ B $ is given, the values of $ A $ and $ C $ are
+determined solely by latent variables.</p>
+<p>In a common effect relationship, $ A $ and $ B $, $ C $ and $ B $ may
+not be independent, but $ A $ and $ C $ are independent, and $ A $ and $
+C $ are conditionally independent given $ B $ and its child nodes.
+Consider the following scenario:</p>
+<p>Tossing two coins, if at least one shows heads, a bell rings. Let $ X
+$: the first coin toss, $ Y $: the second coin toss, $ Z $: the ringing
+of the bell, conforming to the common effect relationship $ X Z Y $. The
+probability distribution of $ X, Y, Z $ is as follows:</p>
+<p><img src="3.png" srcset="/img/0.gif" lazyload></p>
+<p>From this, we can derive $ P(X=Head|Z=1)= $ and $
+P(X=Head|Y=Head,Z=1)= $. Knowing that $ Y $ is heads reduces the
+probability of $ X $ being heads. Now suppose there is an unreliable
+bell-ringer who informs us that the bell rang, reporting 100% when it
+rings and having a 50% chance of reporting when it does not ring. Let $
+W $: the received report. The causal graph then becomes:</p>
+<p><img src="4.png" srcset="/img/0.gif" lazyload></p>
+<p>The probability distribution for $ X, Y, W $ is as follows:</p>
+<p><img src="5.png" srcset="/img/0.gif" lazyload></p>
+<p>From this, we find $ P(X=Head|W=1)= $, and <span class="math inline">\(P(X=Head|Y=Head,W=1)=0.5\)</span>. So <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are not conditionally independent given
+<span class="math inline">\(W\)</span>.</p>
+<h3 id="directed-separation">Directed Separation</h3>
+<p>Directed separation is used to determine whether two variables are
+independent given other variables. It summarizes the three types of node
+relationships mentioned above.</p>
+<ul>
+<li>If two variables $ X $ and $ Y $ are blocked by a set of variables $
+Z $, then $ X Y | Z $. The blocking includes the following two cases:
+<ol type="1">
+<li>A path $ p $ from $ X $ to $ Y $ contains a chain relationship $ A B
+C $ or a common cause relationship $ A B C $, and $ B $ is in $ Z
+$;</li>
+<li>A path $ p $ from $ X $ to $ Y $ contains a common effect
+relationship $ A B C $, and $ B $ and its child nodes are in $ Z $.</li>
+</ol></li>
+</ul>
+<h3 id="intervening">Intervening</h3>
+<p>“The difference between intervening on a variable and conditioning on
+that variable should, hopefully, be obvious. When we intervene on a
+variable in a model, we fix its value. We change the system, and the
+values of other variables often change as a result. When we condition on
+a variable, we change nothing; we merely narrow our focus to the subset
+of cases in which the variable takes the value we are interested in.
+What changes, then, is our perception about the world, not the world
+itself.” ---Chapter 3.1 of <em>Casual Inference in Statistics</em></p>
+<p>In the example of smoking and lung cancer, we cannot determine the
+causality between smoking and lung cancer solely based on correlation.
+To assess causality, we can consider the following scenario: take a
+group of individuals who do not smoke and force them to smoke, then
+observe the probability of developing lung cancer. Next, take a group of
+individuals without lung cancer and induce lung cancer in them, then
+observe the probability of smoking. Let $ X $: smoking, $ Y $: lung
+cancer. In the first case, the probability of lung cancer is higher than
+the baseline probability in the population, that is, $ P(Y=1|do(X=1))
+P(Y=1) $. In the second case, the probability of smoking remains equal
+to the population's smoking probability, $ P(X=1|do(Y=1))=P(X=1) $.
+These results indicate that smoking is a cause of lung cancer, whereas
+lung cancer is not a cause of smoking. It is important to note that the
+do operator implies we are controlling the value of variable $ X $
+without altering the values of any latent variables. Otherwise, in a
+causal DAG, any latent variables that change must be represented as
+variable nodes. (The original statement: "It is worth noting here that
+we are making a tacit assumption that the intervention has no 'side
+effects,' that is, that assigning the value $ x $ for the variable $ X $
+for an individual does not alter subsequent variables in a direct way."
+Here, "direct way" is somewhat vague.) We should note that $
+P(Y|do(X=1)) P(Y|X=1) $. When we enforce $ X=1 $, the parent nodes of $
+X $ no longer affect it; thus, all incoming edges of $ X $ disappear in
+the causal DAG. Conversely, when $ X $ is not forcibly altered, its
+parent nodes can influence both $ X $ and $ Y $. For example, let $ X $:
+increased sales at an ice cream shop, $ Y $: increased crime rate, $ Z
+$: hotter weather. Here, there is a causal relationship $ X Z Y $,
+represented in the following causal DAG:</p>
+<p><img src="7.png" srcset="/img/0.gif" lazyload></p>
+<p>If we take measures to set $ X=0 $, such as closing all ice cream
+shops, then $ Z $ can no longer influence $ X $, and the causal DAG
+changes to:</p>
+<p><img src="8.png" srcset="/img/0.gif" lazyload></p>
+<p>In summary, intervening on a variable is equivalent to removing all
+incoming edges from it in the causal DAG, making it no longer a cause.
+Therefore, only when $ X $ is an orphan node can we have $ P(Y|do(X=1))
+= P(Y|X=1) $.</p>
+<h3 id="intervention-and-observation">Intervention and Observation</h3>
+<p>As long as we can obtain $ P(Y=y|do(X=x)) $, we can construct a
+perfect causal DAG. The example above provides a method for determining
+causality, but it is worth noting that in reality, we may not be able to
+conduct such experiments. To differentiate, we refer to this direct
+control of variables as intervention. Interventions allow us to directly
+obtain $ P(Y=y|do(X=x)) $. As a secondary option, can we attempt to
+infer causal relationships from correlational data? As mentioned
+earlier, for stable data, correlation can reflect causality. If we have
+stable data, we can use observation to assess the strength of causal
+relationships and approximate $ P(Y=y|do(X=x)) $.</p>
+<h3 id="causal-calculation">Causal Calculation</h3>
+<h4 id="average-casual-effect">Average casual effect</h4>
+<p>It is also worth noting that due to the presence of latent variables,
+we cannot derive definitive causal relationships from observational
+data; instead, we can only calculate the strength of causality between
+variables. One straightforward idea is to control the values of $ X $
+and observe the differences in $ Y $ across different values of $ X $,
+as shown in the example below</p>
+<p><img src="6.png" srcset="/img/0.gif" lazyload></p>
+<p>To measure the strength of causality from $ X $ to $ Y $, consider
+calculating the difference in the probability of cure when using a drug
+versus not using it: <span class="math display">\[
+ACE=P(Y=1|do(X=1))-P(Y=1|do(X=0))
+\]</span> Next, we will attempt to calculate $ P(Y=y|do(X=x)) $.</p>
+<h4 id="adjustment-formula">Adjustment Formula</h4>
+<p>In the example of using drug, the causal DAG transfers to following
+figure when <span class="math inline">\(X\)</span> is fixed.</p>
+<p><img src="9.png" srcset="/img/0.gif" lazyload></p>
+<p>This is called manipulated model. The probabilities appearing in the
+manipulated model are denoted as <span class="math inline">\(P_m(*)\)</span> (while the probabilities in the
+original causal DAG are denoted as $ P(*) $). Now, let's consider a more
+general case of how to calculate $ P(Y=y|do(X=x)) $. Since $ X $ becomes
+an orphan node after control, we have $ P(Y=y|do(X=x)) = P_m(Y=y|X=x) $.
+Because $ X $ and $ Z $ are independent in the manipulated model, we can
+express: <span class="math display">\[
+\begin{aligned}
+P_m(Y=y|X=x)&amp;=\frac{P_m(Y=y,X=x)}{P_m(X=x)}=\sum_{z}\frac{P_m(Y=y,X=x,Z=z)}{P_m(X=x)}\\
+&amp;=\sum_{z}\frac{P_m(Y=y,X=x,Z=z)P_m(X=x,Z=z)}{P_m(X=x)P_m(X=x,Z=z)}\\
+&amp;=\sum_{z}P_m(Y=y|X=x,Z=z)P_m(Z=z|X=x)\\
+&amp;=\sum_{z}P_m(Y=y|X=x,Z=z)P_m(Z=z)
+\end{aligned}
+\]</span> At this point, the <span class="math inline">\(do\)</span>
+operator has been eliminated, and the mission of the manipulated model
+is complete. In both the original causal DAG and the manipulated model,
+the causal relationships involving $ Y $ and the variables $ X $ and $ Z
+$ remain the same, i.e., $ Y = f(X,Z,U_Y) $. Thus, we have $
+P_m(Y=y|X=x,Z=z) = P(Y=y|X=x,Z=z) $ and $ Z $ is a cause in both
+diagrams, with $ Z = g(U_Z) $, therefore $ P_m(Z=z) = P(Z=z) $. In the
+manipulated model, only the functional relationship of $ X $ is altered;
+in the original causal DAG, $ X = h(Z,U_X) $, while in the manipulated
+model, $ X = h_m(U_X) $. Thus, we have: <span class="math display">\[
+P(Y=y|do(X=x))=\sum_{z}P(Y=y|X=x,Z=z)P(Z=z)
+\]</span> The above equation is the correction formula for <span class="math inline">\(Z\)</span> when <span class="math inline">\(X\)</span> is controlled.</p>
+<p>Now, consider the Simpson's paradox. Let <span class="math inline">\(X\)</span>: drug use, <span class="math inline">\(Y\)</span>: cure, and <span class="math inline">\(Z\)</span>: gender. The causal DAG is as shown in
+the section on average causal effects. <span class="math display">\[
+\begin{aligned}
+P(Y=1|do(X=1))&amp;=P(Y=1|X=1,Z=men)P(Z=men)+P(Y=1|X=1,Z=women)P(Z=women)\\
+&amp;=0.93\times \frac{87+270}{700}+0.73\times
+\frac{263+80}{700}=0.832\\
+P(Y=1|do(X=0))&amp;=P(Y=1|X=0,Z=men)P(Z=men)+P(Y=1|X=0,Z=women)P(Z=women)\\
+&amp;=0.87\times \frac{87+270}{700}+0.69\times \frac{263+80}{700}=0.7818
+\end{aligned}
+\]</span> Thus, the average causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y=1\)</span> is given by <span class="math display">\[
+ACE=P(Y=1|do(X=1))-P(Y=0|do(X=1))=0.0502
+\]</span></p>
+<h4 id="causal-effect-rule">Causal Effect Rule</h4>
+<p>The adjustment formula provides a method for eliminating the do
+operator under a specific scenario. For a more general case, we can also
+leverage the manipulated model. In the manipulated model, two types of
+nodes are independent of $ X $: one type is originally independent of $
+X $, and the other is the parent nodes $ PA(X) $ of $ X $.</p>
+<p>For the first case, if $ Z $ is independent of $ X $, meaning the
+causal relationship is $ X Y Z $, then the original DAG and the
+manipulated model are the same. We have: <span class="math display">\[
+P(Y|do(X=x)) = P_m(Y|X=x) = P(Y|X=x) = \sum_{z} P(Y|X=x,Z=z) P(Z=z).
+\]</span></p>
+<p>This illustrates why the derivation below does not require the
+inclusion of all variables independent of $ X $ in the manipulated
+model. When only the parent nodes of $ X $ are introduced, it remains
+consistent with the calculations in a Bayesian network. <span class="math display">\[
+\begin{aligned}
+P(Y=y|do(X=x))&amp;=\frac{P_m(Y=y,X=x)}{P_m(X=x)}\\
+&amp;=\sum_{z}\frac{P_m(Y=y,X=x,PA(X)=z)}{P_m(X=x)}\\
+&amp;=\sum_{z}\frac{P_m(Y=y,X=x,PA(X)=z)P_m(X=x,PA(X)=z)}{P_m(X=x)P_m(X=x,PA(X)=z)}\\
+&amp;=\sum_{z}P_m(Y=y|X=x,PA(X)=z)P_m(PA(X)=z|X=x)\\
+&amp;=\sum_z P(Y=y|X=x,PA(X)=z)P(PA(X)=z)\\
+&amp;=\sum_z \frac{P(X=x,Y=y,PA(X)=z)}{P(X=x|PA(X)=z)}
+\end{aligned}\tag{2}
+\]</span></p>
+<h4 id="backdoor-criterion">Backdoor Criterion</h4>
+<p>Observing the derivation process of the above formula, the key point
+is that $ P_m(Y=y|X=x,PA(X)=z) = P(Y=y|X=x,PA(X)=z) $ and $
+P_m(PA(X)=z|X=x) = P_m(PA(X)=z) = P(PA(X)=z) $.</p>
+<p>The first equality holds under the condition that fixing $ X $ and $
+PA(X) $ yields the same probability distribution for $ Y $ in both the
+original DAG and the manipulated model. Since the manipulated model only
+eliminates the incoming edges of $ X $, the value of any confounding
+node that exists between $ X $ and $ Y $ will be fixed, meaning that the
+value of $ Y $ will only be influenced by $ X $ and nodes independent of
+$ X $.</p>
+<p>For instance, consider the following causal relationship:</p>
+<p><img src="10.png" srcset="/img/0.gif" lazyload style="zoom:50%;"></p>
+<p>We have: <span class="math display">\[
+\begin{aligned}
+P(Y=y|X=x,Z=z)&amp;=\frac{P(Y=y,X=x,Z=z)}{P(X=x,Z=z)}\\
+&amp;=\frac{P(f(X,Z,W,U_Y)=y,X=x,Z=z)}{P(X=x,Z=z)}\\
+&amp;=\frac{P(W=u_w,U_Y=u_y,X=x,Z=z)}{P(X=x,Z=z)}
+\end{aligned}\tag{3}
+\]</span> Here, $ u_w, u_y $ are all values satisfying $ f(x,z,W,U_Y)=y
+$. Since $ W $ is not independent of $ X $, we cannot obtain $
+P(W=u_w,U_Y=u_y,X=x,Z=z) = P(W=u_w)P(U_Y=u_y)P(X=x,Z=z) $. However,</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_m(Y=y|X=x,Z=z)&amp;=\frac{P_m(X=x,Z=z,W=u_w,U_Y=u_y)}{P_m(X=x,Z=z)}\\
+&amp;=\frac{P_m(X=x)P_m(Z=z)P_m(W=u_w)P_m(U_Y=u_y)}{P_m(X=x)P_m(Z=z)}\\
+&amp;=P_m(W=u_w)P_m(U_Y=u_y)\end{aligned}\tag{4}
+\]</span> By observing the differences between equations (3) and (4), we
+see that to eliminate the denominator in (3), both $ W $, $ X $, and $ Z
+$ must be eliminated simultaneously, leading to: <span class="math display">\[
+\begin{aligned}
+P(Y=y|X=x,Z=z,W=w)&amp;=\frac{P(W=w,U_Y=u_y,X=x,Z=z)}{P(X=x,Z=z,W=w)}\\
+&amp;=P(U_Y=u_y)
+\end{aligned}
+\]</span> On the other hand <span class="math display">\[
+\begin{aligned}
+P_m(Y=y|X=x,Z=z,W=w)&amp;=\frac{P_m(X=x,Z=z,W=w,U_Y=u_y)}{P_m(X=x,Z=z,W=w)}\\
+&amp;=P_m(U_Y=u_y)\\
+&amp;=P(Y=y|X=x,Z=z,W=w)
+\end{aligned}
+\]</span> Therefore, only by fixing the values of all confounding nodes
+can we obtain $ P_m(Y=y|X=x,Z=z,W=w) = P(Y=y|X=x,Z=z,W=w) $.</p>
+<p>The condition for the second equality to hold is that $ PA(X) $ and $
+X $ are independent in the manipulated model. Thus, any set of nodes
+that is independent of $ X $ in the manipulated model can replace $
+PA(X) $ in the derivation above. Therefore, when the parent nodes of $ X
+$ are difficult to identify, we can use these two conditions to find
+alternative nodes to compute with, yielding the same results. This is
+referred to as the backdoor criterion, as expressed in equation (5):</p>
+<p><span class="math display">\[
+P(Y=y|do(X=x))=\sum_zP(Y=y|X=x,W=w)P(W=w)\tag{5}
+\]</span> The set of nodes $ W $ must satisfy the following two
+conditions:</p>
+<ol type="1">
+<li>$ W $ does not include any descendant nodes of $ X $;</li>
+<li>$ W $ blocks all paths pointing from $ X $ to $ Y $.</li>
+</ol>
+<p>These two conditions are equivalent to the conclusions derived
+above:</p>
+<ol type="1">
+<li>$ W $ includes all confounding nodes;</li>
+<li>In the manipulated model, $ X $ is independent of the nodes in $ W
+$.</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Machine-Learning/" class="category-chain-item">Machine Learning</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Machine-Learning/Causal-Inference/" class="category-chain-item">Causal Inference</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/26/Troubles%20in%20Vessel%20Segmentation/" title="Troubles in Vessel Segmentation">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Troubles in Vessel Segmentation</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/21/TBOW/" title="Best Clips in The Book of Why">
+                        <span class="hidden-mobile">Best Clips in The Book of Why</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"AgcF1mQgwJbHELHjHp7JRJcB-gzGzoHsz","appKey":"0fENfeqhc4WLt6AcCXBkTH91","path":"window.location.pathname","placeholder":"Submit a comment here","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"en","highlight":false,"recordIP":false,"serverURLs":"https://agcf1mqg.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        Views: 
+        <span id="leancloud-site-pv"></span>
+        
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        Visitors: 
+        <span id="leancloud-site-uv"></span>
+        
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
